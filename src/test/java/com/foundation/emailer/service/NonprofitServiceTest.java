@@ -107,6 +107,7 @@ public class NonprofitServiceTest {
     void getAllNonprofits() {
         Pageable pageable = PageRequest.of(0, 10, Sort.by(Sort.Direction.ASC, "id"));
         Page<Nonprofit> nonprofitPage = new PageImpl<>(Collections.singletonList(nonprofit), pageable, 1);
+
         when(nonprofitRepository.findAll(pageable)).thenReturn(nonprofitPage);
         when(modelMapper.map(any(Nonprofit.class), eq(NonprofitDTO.class))).thenReturn(nonprofitDTO);
 
